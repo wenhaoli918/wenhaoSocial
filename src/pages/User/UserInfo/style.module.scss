@@ -1,0 +1,92 @@
+.changeInfo{
+  flex: 1;
+  width: 100%;
+}
+
+.header{
+  width: 100%;
+  height: 45px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  display: flex;
+  .title{
+    font-family: 'DengXian';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+  }
+  .save{
+    font-family: 'DengXian';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+  }
+}
+
+.backImg{
+  width: 100;
+  height: 120px;
+  position: relative;
+  .file{
+    position: absolute;
+    opacity: 0;
+    z-index: 999;
+    width: 20px;
+    height: 20px;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+  }
+  img{
+    width: 100%;
+    height: 100%;
+  }
+  .camera{
+    
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+  }
+}
+
+.logo{
+  width: 100%;
+  height: 60px;
+  position: relative;
+  margin-top: -30px;
+  :global{
+    .adm-avatar{
+      position: absolute;
+      margin-left: 20px;
+      width: 60px;
+      height: 60px;
+      border-radius: 60px;  
+    }
+  }
+}
+
+.name{
+  margin-top: 60px;
+  padding: 15px 20px;
+}
+
+.userName{
+  font-family: 'DengXian';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  color: #3291FF;
+}
+
+.introduce{
+  padding: 15px 20px;
+}
+
+.camera2{
+  position: absolute;
+  top: 20px;
+  left: 40px;
+  z-index: 999;
+}

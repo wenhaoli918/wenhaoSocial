@@ -1,0 +1,53 @@
+.main{
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.header{
+  height: 80px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headerItem{
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  :global{
+    .adm-image{
+      width: 30px;
+      height: 30px;
+    }
+    .adm-avatar{
+      border-radius: 15px;
+    }
+  }
+}
+
+.logo{
+  width: 30px;
+  height: 30px;
+}
+
+.mainContent{
+  flex: 1;
+  overflow: auto;
+}
+
+.footer{
+  height: 80px;
+  // position: absolute;
+  // right: 20px;
+  // left: 20px;
+  // bottom: 0;
+}
+
+.footerHidden{
+  display: none;
+}

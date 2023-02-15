@@ -1,0 +1,34 @@
+.header{
+  padding-bottom: 11px;
+  padding-top: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #EDEDED;
+  :global{
+    .adm-search-bar{
+      flex: 1;
+    }
+  }
+  .back{
+    width: 18px;
+    height: 18px;
+    margin-right: 15px;
+  }
+}
+
+.main{
+  flex: 1;
+  overflow: auto;
+  :global{
+    .adm-tabs{
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .adm-tabs-content{
+      flex: 1;
+      overflow: auto;
+    }
+  }
+}

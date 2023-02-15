@@ -1,0 +1,115 @@
+.alert{
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  height: 100vh;
+  overflow: auto;
+}
+
+.alertHeader{
+  height: 2.8125rem;
+  width: 100%;
+  padding: 0.5625rem 0;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.userLogo{
+  position: absolute;
+  height: 1.875rem;
+  width: 1.875rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img{
+    width: 100%;
+    width: 100%;
+    border-radius: 0.9375rem;
+  }
+}
+
+.notice{
+  margin: 0 auto;
+  font-family: 'DengXian';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #000000;
+}
+
+.alertItem{
+  flex: 1;
+  overflow: auto;
+  flex-direction: column;
+}
+
+.noticeItem{
+  padding: 0.3125rem 0;
+  height: 3.75rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-top: 0.0625rem solid #EDEDED;
+}
+
+.itemLogo{
+  width: 2.5rem;
+  height: 2.5rem;
+  :global{
+    .adm-image{
+      border-radius: 1.25rem;
+    }
+  }
+}
+
+.itemContent{
+  margin-left: 0.625rem;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.state{
+  position: absolute;
+  top: 0.8125rem;
+  right: 1.5rem;
+}
+
+.hide{
+  display: none;
+}
+
+.contentTop{
+  display: flex;
+  align-items: center;
+  height: 1.25rem;
+  width: 100%;
+  margin-bottom: 0.3125rem;
+  align-items: center;
+  .name{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-right: 0.25rem;
+  }
+  .content{
+    align-items: center;
+    font-family: 'DengXian';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1rem;
+    color: #333333;
+  }
+}
+
+.contentBottom{
+  height: 0.6875rem;
+  width: 100%;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 0.75rem;
+}

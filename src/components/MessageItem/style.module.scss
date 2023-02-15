@@ -1,0 +1,64 @@
+.messageItem{
+  padding-bottom: 15px;
+  display: flex;
+  position: relative;
+}
+
+.lefttArea{
+  width: 50px;
+  height: 50px;
+  :global{
+    .adm-avatar{
+      height: 50px;
+      width: 50px;
+      border-radius: 25px;
+    }
+  }
+}
+
+.rightArea{
+  width: 100%;
+  margin-left: 12px;
+  .rightTop{
+    font-family: 'DengXian';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .rightbottom{
+    width: 235px;
+    margin-top: 2px;
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #ADB5BD;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.time{
+  position: absolute;
+  right: 21px;
+  font-family: 'DengXian';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.unchecked{
+  position: absolute;
+  right:  21px;
+  bottom: 20px;
+  width: 23px;
+  height: 20px;
+  border-radius: 40px;
+  background: #E94242;
+  text-align: center;
+  line-height: 20px;
+  color: #fff;
+}

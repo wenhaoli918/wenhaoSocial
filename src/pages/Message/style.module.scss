@@ -1,0 +1,46 @@
+.mainContent{
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.messageHeader{
+  height: 45px;
+  width: 100%;
+  padding: 9px 0;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.userLogo{
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img{
+    width: 100%;
+    width: 100%;
+    border-radius: 15px;
+  }
+}
+
+.message{
+  margin: 0 auto;
+  font-family: 'DengXian';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  color: #000000;
+}
+
+.messageArea{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  margin-top: 20px;
+}

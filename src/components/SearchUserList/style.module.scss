@@ -1,0 +1,66 @@
+.userItem{
+  display: flex;
+  padding: 15px 0;
+  :global{
+    .adm-image{
+      height: 50px;
+      width: 50px;
+      border-radius: 25px;
+    }
+}
+}
+
+.right{
+  margin-left: 13px;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  
+  .userInfo{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    color: #333333;
+  }
+}
+
+.rightTop{
+  display: flex;
+  justify-content: space-between;
+  .userName{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+  }
+  .nickName{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #A9A9A9;
+    margin: 2px 0;
+  }
+}
+
+.button{
+  width: 80px;
+  height: 26px;
+  text-align: center;
+  line-height: 26px;
+  border: 1px solid gray;
+  padding: 0px, 19px, 0px, 19px;
+  border-radius: 13px;
+  color: #fff;
+  background-color: #000000;
+}
+
+.focusing{
+  color:  #000000;
+  background-color: #fff;
+}
+
+.displayNone{
+  display: none;
+}

@@ -1,0 +1,152 @@
+.mainPage{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.header{
+  height: 100px;
+  width: 100%;
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  :global{
+    .adm-image{
+      width: 100%;
+      height: 120px;
+    }
+    .adm-avatar{
+      margin-left: 20px;
+      width: 60px;
+      height: 60px;
+      border-radius: 60px;
+      margin-top: -30px;
+    }
+  }
+  .options{
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    bottom: 43px;
+    display: flex;
+    justify-content: space-between;
+    .headerButton{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 15px;
+      background: rgba(0, 0, 0, 0.5);
+    }
+  }
+}
+
+.mid{
+  margin-top: 140px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.focus{
+  display: block;
+  width: 80px;
+  height: 26px;
+  text-align: center;
+  line-height: 26px;
+  border: 1px solid gray;
+  padding: 0px, 19px, 0px, 19px;
+  border-radius: 13px;
+  color: #000000;
+  background-color: #fff;
+}
+
+.user{
+  width: 100%;
+  margin-top: -5px;
+  display: flex;
+  flex-direction: column;
+  .userNames{
+    display: inline-block;
+    width: 32px;
+    height: 18px;
+    font-family: 'Font Awesome 5 Free';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 18px;
+    color: #000000;
+  }
+  .time{
+    width: 100%;
+    height: 17px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    margin-top: 5px;
+    color: #666666;
+  }
+  .introduce{
+    width: 100%;
+    font-family: 'DengXian';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #333333;
+    margin-top: 5px;
+  }
+  .follow{
+    width: 164px;
+    height: 15px;
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    span{
+      font-family: 'DengXian';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 15px;
+      color: #000000;
+    }
+}
+}
+
+.post{
+  margin-top: 10px;
+  overflow: auto;
+  :global{
+    .adm-tabs{
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .adm-tabs-content{
+      flex: 1;
+      overflow: auto;
+    }
+  }
+}
+
+.button{
+  width: 80px;
+  height: 26px;
+  text-align: center;
+  line-height: 26px;
+  border: 1px solid gray;
+  padding: 0px, 19px, 0px, 19px;
+  border-radius: 13px;
+  color: #fff;
+  background-color: #000000;
+}
+
+.focusing{
+  color:  #000000;
+  background-color: #fff;
+}

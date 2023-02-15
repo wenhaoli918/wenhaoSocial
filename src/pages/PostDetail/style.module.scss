@@ -1,0 +1,201 @@
+.header{
+  width: 100%;
+  height: 2.5rem;
+  display: flex;
+  margin-bottom: 1.125rem;
+  align-items: flex-end;
+}
+
+.back{
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+.title{
+  margin-left: 8.75rem;
+  font-family: 'DengXian';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.content{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-top: 1.25rem;
+  overflow: auto;
+}
+
+.contentHeader{
+  display: flex;
+  margin-left: 1.0625rem;
+  :global{
+    .adm-image{
+      height: 3.125rem;
+      width: 3.125rem;
+      border-radius: 1.5625rem;
+    }
+}
+}
+
+.contentHeaderName{
+  display: flex;
+  flex-direction: column;
+  margin-left: 0.625rem;
+  margin-top: 0.3125rem;
+  .name{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #000000;;
+  }
+  .nickName{
+    margin-top: 0.125rem;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.875rem;
+    color: #A9A9A9;;
+  }
+}
+
+@mixin showImg {
+  :global{
+    .adm-image-viewer-image-wrapper{
+      img{
+        width: 100%;
+        height: 29.25rem;
+        border-radius: 0;
+      }
+    }
+  }
+}
+
+.cardMid{
+  margin-left: 50px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.125rem;
+  .midContent{
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.875rem;
+    padding: 0.3125rem 0;
+    word-wrap: break-word;
+    word-break: normal;
+    margin-bottom: 0.625rem;
+  }
+  .midImg1{
+    width: 100%;
+    height: 11.875rem;
+    margin-bottom: 0.9375rem;
+    img{
+      width: 100%;
+      height: 100%;
+      border-radius: 0.625rem;
+    }
+    @include showImg()
+  }
+  .midImg2{
+    width: 100%;
+    height: 6.25rem;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    margin-bottom: 0.9375rem;
+    gap: 0.25rem;
+    img{
+      width: 100%;
+      height: 6.25rem;
+    }
+    @include showImg()
+  }
+  .midImg2 :nth-child(1){
+    border-radius: 0.625rem 0 0 0.625rem;
+  }
+  .midImg2 :nth-child(2){
+    border-radius: 0 0.625rem 0.625rem 0;
+  }
+
+  .midImg3{
+    height: 12.75rem;
+    img{
+      width: 100%;
+      height: 6.25rem;
+    }
+  }
+  .midImg3 :nth-child(1){
+    border-radius: 0.625rem 0 0 0;
+  }
+  .midImg3 :nth-child(2){
+    border-radius: 0 0.625rem 0 0;
+  }
+  .midImg3 :nth-child(3){
+    border-radius: 0 0 0 0.625rem;
+  }
+  .midImg3 :nth-child(4){
+    border-radius: 0 0 0.625rem 0;
+  }
+}
+
+.createTime{
+  width: 100%;
+  padding-bottom: 0.9375rem;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 0.75rem;
+  color: #666666;
+  border-bottom: 0.0625rem solid #EDEDED;
+}
+
+.forwordAlike{
+  display: flex;
+  align-items: center;
+  width: 7.5rem;
+  justify-content: space-between;
+  margin: 0.9375rem 0 0.9375rem 0.75rem;
+
+  .item{
+    .number{
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 0.875rem;
+      color: #000000;
+    }
+    .text{
+      margin-left: 0.3125rem;
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 300;
+      font-size: 0.875rem;
+      color: #666666;
+    }
+  }
+}
+
+.icons{
+  display: flex;
+  justify-content: space-around;
+  padding: 0.9375rem 0 0.9375rem 0;
+  border-top: 0.0625rem solid #EDEDED;
+  border-bottom: 0.0625rem solid #EDEDED;
+}
+
+.comment{
+  display: flex;
+  flex-direction: column;
+}
+
+.deleteP{
+  border: solid 0.0625rem #ededed;
+  border-radius: 0.375rem;
+  padding: 0.75rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #3291ff;
+}
