@@ -11,23 +11,27 @@ import Drawer from "../../../components/Drawer";
 import { useLocation, useNavigate } from "react-router-dom";
 import { formatDate } from "../../../utils/clcTime";
 import classNames from "classnames";
+import useFocusList from "../../../hooks/useFocusList";
+import useFollower from "../../../hooks/useFollower";
 
 export default function UserPage() {
   const location = useLocation()
   const {_id,headimgurl,backImgUrl,username,nickname,ctime} = location.state
-  const { getUserFocus, getUserFollower, focusList, follower, focusUser, stopFocusUser, userInfo } =
-    useUser();
+  const { focusUser, stopFocusUser, userInfo } = useUser();
   const { getUserPost, userPosts, deletPost, userPicpostList, getLikeList, likeList } = usePosts();
   const [fresh,setFresh] = useState<boolean>(false)
+  //关注列表相关
+  let {focusList} = useFocusList()
+
+  //粉丝列表相关
+  let {follower} = useFollower()
   const navigate = useNavigate()
   
   //获得帖子，粉丝，关注
   useEffect(() => {
     getUserPost({author:_id,commenteId:''})
-    getUserFocus(_id);
-    getUserFollower(_id);
     getLikeList(_id)
-  }, [_id, getUserFocus, getUserFollower, getUserPost, fresh, getLikeList]);
+  }, [_id,getUserPost, fresh, getLikeList]);
 
   const [visible, setVisible] = useState<boolean>(false)
   const [currentPostId, setCurrentPostId] = useState<string>('')
@@ -88,7 +92,8 @@ export default function UserPage() {
             <IconMsg></IconMsg>
           </div>
         </div>
-        <Image src={backImgUrl} />
+        {/* <Image src={backImgUrl} /> */}
+        <Image src='https://images.unsplash.com/photo-1567945716310-4745a6b7844b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=60'></Image>
         <Avatar src={headimgurl as string}></Avatar>
       </div>
       <div className={style.mid}>

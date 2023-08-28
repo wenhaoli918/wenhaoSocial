@@ -1,8 +1,9 @@
 import React, { useCallback, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import style from "./style.module.scss";
-import { ReactComponent as IconLogo } from "../../assets/imgs/login.svg";
+import { ReactComponent as IconLogo } from "../../assets/imgs/login2.svg";
 import { ReactComponent as IconHoem } from "../../assets/imgs/navHome.svg";
 import { ReactComponent as IconUser } from "../../assets/imgs/user.svg";
+import { ReactComponent as IconAlert } from '../../assets/imgs/alert2.svg'
 import { Avatar, ImageUploader, Skeleton, Popup, TextArea, InfiniteScroll, Toast } from "antd-mobile";
 import { BellOutline } from "antd-mobile-icons";
 import PostItem from "../../components/PostItem";
@@ -22,16 +23,16 @@ import { shallowEqual, useSelector } from "react-redux";
 import { ReactComponent as IconPic } from "../../assets/imgs/pic.svg";
 import classNames from "classnames";
 import { reqUpLoad, transPost } from "../../api/api";
+import useAllPosts from "../../hooks/useAllPosts";
+import useFocusList from "../../hooks/useFocusList";
+import useFollower from "../../hooks/useFollower";
 
 export default function Home() {
-  const { userInfo, focusList, getUserFocus, getUserFollower, follower } =
-    useUser();
-  const { getPosts, posts, getAuditList, hasMore, total,setPosts } = usePosts();
+  const { userInfo } = useUser();
   const [visible, setVisible] = useState<boolean>(false);
   const [transVisible, setTransVisible] = useState<boolean>(false);
   //点击评论，点赞按钮刷新首页
   const [fresh, setFresh] = useState(false);
-  const location = useLocation();
   const [currentPost, setCurrentPost] = useState<PostItems>();
   const [value, setValue] = useState("");
   const [fileList, setFileList] = useState<ImageUploadItem[]>([]);
@@ -39,29 +40,19 @@ export default function Home() {
     { name: "个人主页", path: "/main/userpage", icon: <IconHoem></IconHoem> },
     { name: "个人资料", path: "/main/userinfo", icon: <IconUser></IconUser> },
   ];
-  const { setScrollNum, scrollNum } = useContext(myContext);
 
   // const { loading } = useSelector((state: any) => {
   //   return { loading: state.loading };
   // }, shallowEqual);
-  console.log('aaa');
-  
-  useEffect(() => {
-    if (userInfo.openid) {
-      getPosts();
-      getUserFocus(userInfo._id as string);
-      getUserFollower(userInfo._id as string);
-    }
 
-    //给帖子列表页增加滚动事件，以备记住帖子位置
-    // cref.current?.firstChild?.firstChild?.addEventListener(
-    //   "scroll",
-    //   throtten(() => {
-    //     const scrollTop = (cref.current?.firstChild?.firstChild as HTMLDivElement).scrollTop;
-    //     setScrollNum(scrollTop as number);
-    //   }, 50)
-    // ); 
-  }, [getPosts, getUserFocus, getUserFollower, userInfo._id, userInfo.openid]);
+  //home页面列表数据，以及滚动时懒加载数据
+  let {allPosts,getAuditList,hasMore} = useAllPosts()
+
+  //关注列表相关
+  let {focusList} = useFocusList()
+
+  //粉丝列表相关
+  let {follower} = useFollower()
   
   //改变状态，强制刷新
   const changeFresh = () => {
@@ -102,7 +93,7 @@ export default function Home() {
   };
   
   const isItemLoaded = (index: number) => {
-    return index < posts.length;
+    return index < allPosts.length;
   };
   
   const Row = ({ index, style }: any) => {
@@ -112,14 +103,14 @@ export default function Home() {
       <div style={{...style, display:'flex'}} ref={rowRef} >
         <PostItem
           user={false}
-          itemInfo={posts[index]}
+          itemInfo={allPosts[index]}
           cite={false}
           // scrollTop = {document.getElementsByClassName('style_mainContent__ylaDx')[0].scrollTop}
-          key={posts[index].ctime}
+          key={allPosts[index].ctime}
           changeFresh={changeFresh}
           showTrans={showTrans}
-          posts = {posts}
-          setPosts = {setPosts}
+          posts = {allPosts}
+          // setPosts = {setAllPosts}
         ></PostItem>
       </div>
     );
@@ -190,12 +181,12 @@ export default function Home() {
           <IconLogo className={style.logo}></IconLogo>
         </span>
         <span className={style.headerItem}>
-          <BellOutline className={style.logo} />
+          <IconAlert className={style.logo} />
         </span>
       </div>
       <div className={style.mainContent} ref={cref}>
-        {/* {
-          posts.map((item) => {
+        {
+          allPosts.map((item) => {
             return (
             <PostItem
               user={false}
@@ -210,8 +201,8 @@ export default function Home() {
           })
         }
         <InfiniteScroll loadMore={getAuditList} hasMore={hasMore} /> 
-        */}
-        {
+       
+        {/* {
           <AutoSizer>
             {({ width, height }) => (
               <InfiniteLoader
@@ -225,7 +216,7 @@ export default function Home() {
                     className="777"
                     width={width}
                     height={height}
-                    itemData={posts}
+                    itemData={allPosts}
                     itemCount={total}
                     itemSize={getRowHight}
                     ref={(list) => {
@@ -240,7 +231,7 @@ export default function Home() {
               </InfiniteLoader>
             )}
           </AutoSizer>
-        }
+        } */}
         {/* <PostItem></PostItem> */}
       </div>
       <CtratePost></CtratePost>

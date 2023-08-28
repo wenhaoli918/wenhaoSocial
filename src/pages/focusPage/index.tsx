@@ -6,28 +6,23 @@ import { Tabs } from 'antd-mobile'
 import SearchUserList from '../../components/SearchUserList'
 import { Liked } from '../../types'
 import { useNavigate } from 'react-router-dom'
+import useFocusList from '../../hooks/useFocusList'
+import useFollower from '../../hooks/useFollower'
 
 export default function FocusPage() {
-  const {userInfo ,getUserFocus,focusList,follower,getUserFollower} = useUser()
+  const {userInfo } = useUser()
   const { username } = userInfo
-  const navigate = useNavigate()
-  useEffect(()=>{
-    getUserFollower(userInfo._id as string)
-    getUserFocus(userInfo._id as string)
-  },[getUserFocus, getUserFollower, userInfo._id])
-  console.log(focusList);
-  
-  const handleChange = (value:string) => {
-    if(value === 'focus'){
-      console.log(111);
-      
-      getUserFocus(userInfo._id as string)
-    }
-    if(value === 'fans') {
-      getUserFollower(userInfo._id as string)
-    }
-  }
+    //关注列表相关
+    let {focusList,setFocusList,setForceFresh,forceFresh} = useFocusList()
 
+    //粉丝列表相关
+    let {follower,setFollower} = useFollower()
+    const navigate = useNavigate()
+
+    const handleClick = () => {
+      setForceFresh(!forceFresh)
+    }
+    
   return (
     <div className={style.mainContent}>
       <div className={style.header}>
@@ -35,7 +30,7 @@ export default function FocusPage() {
         <div className={style.name}>{username}</div>
       </div>
       <div className={style.tabs}>
-          <Tabs onChange={(value)=>{handleChange(value)}}>
+          <Tabs onChange={() => {handleClick()}}>
             <Tabs.Tab title='关注者' key='fans'>
               {
                 follower.map((item:Liked)=>{

@@ -11,8 +11,6 @@ export const useUser = () => {
   const location = useLocation()
   const navigate = useNavigate()
   const {userInfo,setUserInfo} = useContext(myContext)
-  const {focusList,setFocusList} = useContext(myContext)
-  const [follower,setFollower] = useState<UserInfo[]>([])
 
   //获取用户微信信息
   const getWxUserInfo = useCallback(async(code:CodeP)=>{
@@ -47,18 +45,6 @@ export const useUser = () => {
     setUserInfo(res.data.data)
   },[setUserInfo])
 
-  //查询用户关注列表
-  const getUserFocus = useCallback(async(id:string)=>{
-    let res = await reqUserFocus(id as string)
-    setFocusList([...res.data.data])
-  },[setFocusList])
-
-  //查询用户粉丝列表
-  const getUserFollower = useCallback(async(id:string)=>{
-    let res = await reqUserFollower(id as string)
-    setFollower([...res.data.data])
-  },[])
-
   //关注用户
   const focusUser = useCallback(async(focusid:string,userid:string)=>{
     await getFocus(focusid,userid)
@@ -77,16 +63,11 @@ export const useUser = () => {
 
   return {
     userInfo,
-    focusList,
-    follower,
     stopFocusUser,
-    setFollower,
-    getUserFocus,
     isLogin,
     getWxUserInfo,
     getAppUserInfo,
     focusUser,
-    getUserFollower,
     getUser
   }
 }

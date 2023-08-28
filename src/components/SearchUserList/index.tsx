@@ -4,24 +4,24 @@ import React, { useEffect, useState } from "react";
 import { useUser } from "../../hooks/user";
 import { Liked, UserInfo } from "../../types";
 import style from "./style.module.scss";
+import useFocusList from "../../hooks/useFocusList";
 interface Props {
   info?: UserInfo;
-  user_Id?:string
+  user_Id?:string;
 }
 
 export default function SearchUserList({ info,user_Id }: Props) {
-  const { focusUser, userInfo, focusList, stopFocusUser, getUserFocus,getUser } =
+  const { focusUser, userInfo, stopFocusUser, getUser } =
     useUser();
   const [currentUser,setCurrentUser] = useState<UserInfo>({})
+  let {focusList} = useFocusList()
   useEffect(() => {
     if(user_Id){
       getUser(user_Id).then((res)=>{
         setCurrentUser(res.data.data[0])
       })
     }
-    getUserFocus(userInfo._id as string);
-  }, [getUser, getUserFocus, userInfo._id, user_Id]);
-  console.log(focusList);
+  }, [getUser, userInfo._id, user_Id]);
   
   //关注用户
   // const handleFocus = (focusid: string) => {
@@ -75,7 +75,7 @@ export default function SearchUserList({ info,user_Id }: Props) {
               handleStopFocus(e, (info? info._id : currentUser._id) as string);
             }}
           >
-            {focusList.some((item: Liked) => item.followId === info?._id ) ? '取消关注' : '关注'}
+            {focusList.some((item: Liked) => item.followId === info?._id || item.followId === currentUser._id) ? '取消关注' : '关注'}
           </div>
         </div>
         <div className={style.userInfo}>1111111111</div>
