@@ -2,6 +2,7 @@ import { Toast } from "antd-mobile";
 import axios from "axios";
 import { store } from "../store";
 import { setLoading } from "../store/actions";
+import { AxiosRequestConfig } from "axios";
 
 //发送请求时请求头自动加上cookie，要不然总返回460
 axios.defaults.withCredentials = false;
@@ -12,6 +13,8 @@ declare module 'axios' {
 const requests = axios.create({
   baseURL: "",
   timeout: 5000,
+  retry: 3,
+  retryDelay: 1000,
   headers: {
     // "Content-type" : "application/x-www-form-urlencoded",
   },
@@ -35,7 +38,20 @@ requests.interceptors.response.use(
     return res.data;
   },
   (err) => {
-    return Promise.reject(err.response.data);
+    let config = err.config
+    if(!config || !config.retry){
+      return Promise.reject(err.response.data);
+    }
+    config._retryCount = config._retryCount || 0
+    if(config._retryCount >= config.retry){
+      return Promise.reject(err);
+    }
+    config._retryCount += 1
+    return new Promise((reslove,reject) => {
+      setTimeout(async() => {
+        reslove(await requests(config))
+      },config.retryDelay)
+    })
   }
 );
 export default requests;
