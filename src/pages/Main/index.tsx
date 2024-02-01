@@ -10,12 +10,11 @@ import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 
 export default function Main() {
 
-  const {getAppUserInfo,isLogin} = useUser()
+  const {getAppUserInfo} = useUser()
 
   useEffect(() => {
-      isLogin()
       getAppUserInfo()
-  },[getAppUserInfo, isLogin])
+  },[getAppUserInfo])
 
   const navigate = useNavigate()
   const location = useLocation()

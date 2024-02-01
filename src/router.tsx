@@ -1,5 +1,5 @@
 import { lazy } from "react"
-import { Navigate } from "react-router-dom"
+import { Navigate, useLocation } from "react-router-dom"
 // import Alert from "./pages/Alert"
 // import Auth from "./pages/Auth"
 // import ChatPage from "./pages/chat"
@@ -16,6 +16,7 @@ import { Navigate } from "react-router-dom"
 // import SearchResult from "./pages/SearchResult"
 // import UserInfo from "./pages/User/UserInfo"
 // import UserPage from "./pages/User/UserPage"
+import { UseCheckLogin } from "./hooks/useCheckLogin"
 
 const Login = lazy(() => import('./pages/Login'))
 const Regiset = lazy(() => import('./pages/Registe'))
@@ -45,7 +46,8 @@ const routers = [
   },
   {
     path:'/main',
-    element:<Main/>,
+    element:<UseCheckLogin><Main/></UseCheckLogin>,
+    // element:<Main></Main>,
     children: [
       { path: "home", element: <Home></Home> },
       { path: "search", element: <Search></Search> },

@@ -17,6 +17,7 @@ export const useUser = () => {
     let res = await getWxInfo(code)
     
     if(res.data.sid){
+        localStorage.setItem('login',res.data.sid)
         navigate('/main')
     } 
     if(res.data.nickname){
